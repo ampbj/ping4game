@@ -13,7 +13,7 @@ MongoClient.connect(mongoConfig.url, (err, db) => {
             imageUrl: "",
             howFar: 20,
             Games: [
-                "#pingpong", "#football"
+                "#pingpong", "#football",
             ],
             currentGame: "#pingpong",
             when: 10.5,

@@ -1,11 +1,12 @@
-module.exports = (mPool) =>{
-    return{
+module.exports = (mPool) => {
+    return {
         getScalaValues(user) {
-            return mPool.collection("users")
+            return mPool
+                .collection("users")
                 .findOne({userId: user.id})
-                .then((result) =>{
+                .then((result) => {
                     
-                })
+                }),
         }
     }
 }

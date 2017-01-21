@@ -11,8 +11,8 @@ const RootQueryType = new GraphQLObjectType({
             description: "top level users collection",
             args: {
                 name: {
-                    type: new GraphQLNonNull(GraphQLString)
-                }
+                    type: new GraphQLNonNull(GraphQLString),
+                },
             },
             resolve: (par, args, ctx, fourth) => {
                 return {
