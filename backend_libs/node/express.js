@@ -15,7 +15,7 @@ MongoClient.connect(mongoConfig.url, (err, mPool) => {
     app.use("/graphql", graphqlHTTP({
         schema: schema,
         graphiql: true,
-        context: {mPool},
+        context: {mPool}
     }));
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
