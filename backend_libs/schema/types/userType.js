@@ -5,43 +5,64 @@ const {
     GraphQLString,
     GraphQLFloat,
     GraphQLList,
-    GraphQLNonNull,
+    GraphQLNonNull
 } = require("graphql");
+const mongoFunctions = require("../../database/mongo_functions");
 
-module.exports = new GraphQLObjectType({
+const user = new GraphQLObjectType({
     name: "userType",
-    fields: {
-        id: {
-            type: GraphQLID,
+    fields: () => ({
+        _id: {
+            type: GraphQLID
         },
         name: {
-            type: new GraphQLNonNull(GraphQLString),
+            type: new GraphQLNonNull(GraphQLString)
         },
         email: {
-            type: new GraphQLNonNull(GraphQLString),
+            type: new GraphQLNonNull(GraphQLString)
         },
         location: {
-            type: new GraphQLNonNull(GraphQLString),
+            type: new GraphQLNonNull(GraphQLString)
         },
         imageUrl: {
-            type: GraphQLString,
+            type: GraphQLString
         },
-        how_far: {
-            type: GraphQLFloat,
+        howFar: {
+            type: GraphQLFloat
         },
         games: {
             type: new GraphQLList(GraphQLString),
-            resolve: () => {},
+            resolve: () => {}
         },
-        current_game: {
-            type: GraphQLString,
+        currentGame: {
+            type: GraphQLString
         },
         when: {
-            type: GraphQLFloat,
+            type: GraphQLFloat
         },
-        friends_matched: {
-            type: new GraphQLList(GraphQLString),
-            resolve: () => {},
-        },
-    },
+        friends: {
+            type: new GraphQLList(user),
+            args: {
+                id: {
+                    type: GraphQLID
+                }
+            },
+            resolve: (parent, args, {mPool}, fourth) => {
+                if(args.id !== undefined) {
+                    let result = [];
+                    result.push(mongoFunctions(mPool).getUserValues(args.id));
+                    return result;
+                } 
+                else{
+                    let result = [];
+                    parent.friends.map((item) => {
+                        result.push(mongoFunctions(mPool).
+                        getUserValues(item.id));
+                    });
+                    return result;
+                }
+            }
+        }
+    })
 });
+module.exports = user;

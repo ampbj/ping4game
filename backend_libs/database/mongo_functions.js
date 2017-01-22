@@ -1,12 +1,12 @@
+const {ObjectID} = require("mongodb");
 module.exports = (mPool) => {
     return {
-        getScalaValues(user) {
+        getUserValues(user) {
+            let mongoId = new ObjectID(user);
             return mPool
                 .collection("users")
-                .findOne({userId: user.id})
-                .then((result) => {
-                    
-                }),
+                .findOne({"_id": mongoId})
+                .then((result) => result);
         }
-    }
-}
+    };
+};

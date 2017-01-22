@@ -30,6 +30,8 @@
     "sourceType": "module"
   },
   "rules": {
+    "brace-style" :0,
+    "comma-dangle": ["error", "never"],
     "quotes": 0,
     "no-console": 1,
     "no-debugger": 1,
