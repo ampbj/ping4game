@@ -4,9 +4,16 @@ This is an experimental project to use cutting edge technologies to create a mob
 
 Technologies used:
 
-React-Native
-Node.js
-MongoDB
-Graphql
-Jest
-Flow
+1.React-Native
+
+2.Node.js
+
+3.MongoDB
+
+4.Graphql
+
+5.dataloader
+
+6.Jest
+
+7.Flow
