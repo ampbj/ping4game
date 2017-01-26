@@ -6,12 +6,14 @@ console.log(`Running in ${nodeEnv} mode!`);
 const app = require("express")();
 const schema = require("../schema/model");
 const graphqlHTTP = require("express-graphql");
-const {MongoClient} = require("mongodb");
+const {MongoClient, Logger} = require("mongodb");
 const assert = require("assert");
 const mongoConfig = require("../config/main_config")[nodeEnv];
 
 MongoClient.connect(mongoConfig.url, (err, mPool) => {
     assert.equal(err, null);
+    Logger.setLevel("debug");
+    Logger.filter('class', ['Server']);
     app.use("/graphql", graphqlHTTP({
         schema: schema,
         graphiql: true,
