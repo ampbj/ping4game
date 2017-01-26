@@ -13,6 +13,15 @@ module.exports = (mPool) => {
             find({"_id": {$in: ids}})
             .toArray()
             .then( (result) => result );
+        },
+        addNewUser({name, email}) {
+             return mPool.collection("users").
+                insertOne({
+                    "name": name, 
+                    "email": email
+                }, function(err, newUser) {
+                    return newUser;
+                });
         }
     };
 };
