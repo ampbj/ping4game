@@ -7,6 +7,12 @@ module.exports = (mPool) => {
                 .collection("users")
                 .findOne({"_id": mongoId})
                 .then((result) => result);
+        },
+        getUsersValues(ids) {
+            return mPool.collection("users").
+            find({"_id": {$in: ids}})
+            .toArray()
+            .then( (result) => result );
         }
     };
 };
