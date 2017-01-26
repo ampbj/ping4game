@@ -5,11 +5,14 @@ module.exports = (mPool) => {
             let mongoId = new ObjectID(user);
             return mPool
                 .collection("users")
-                .find({"_id": {$in: [mongoId]}})
-                .toArray()
-                .then((result) => {
-                    return result;
-                });
+                .findOne({"_id": mongoId})
+                .then((result) => result);
+        },
+        getUsersValues(ids) {
+            return mPool.collection("users").
+            find({"_id": {$in: ids}})
+            .toArray()
+            .then( (result) => result );
         }
     };
 };

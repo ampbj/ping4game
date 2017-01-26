@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "serv": "nodemon --exec node backend_libs/node/express.js"
+    "serv": "nodemon --exec node backend_libs/node/express.js",
+    "populate": "node backend_libs/database/loadTestMongoData.js"
   },
   "dependencies": {
     "dataloader": "^1.2.0",

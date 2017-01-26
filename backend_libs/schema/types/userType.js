@@ -8,7 +8,8 @@ const {
     GraphQLNonNull
 } = require("graphql");
 const mongoFunctions = require("../../database/mongo_functions");
-
+const DataLoader = require("dataloader");
+const {ObjectID} = require("mongodb");
 const user = new GraphQLObjectType({
     name: "userType",
     fields: () => ({
@@ -48,22 +49,15 @@ const user = new GraphQLObjectType({
                 }
             },
             resolve: (parent, args, {mPool}, fourth) => {
-                if(args.id !== undefined) {
-                    return mongoFunctions(mPool).getUserValues(args.id);
-                    // let result = [];
-                    // result.push(mongoFunctions(mPool).
-                    // getUserValues(args.id));
-                    // return result;
-                } 
-                else{
-                    return mongoFunctions(mPool).
-                        getUserValues(args.id);
-                    // let result = [];
-                    // parent.friends.map((item) => {
-                    //     result.push(mongoFunctions(mPool).
-                    //     getUserValues(item.id));
-                    // });
-                    // return result;
+                const getUsersDataLoader = new DataLoader(mongoFunctions(mPool)
+                                            .getUsersValues);
+                if (args.id !== undefined) {
+                    let mongoId = new ObjectID(args.id);
+                    return [getUsersDataLoader.load(mongoId)];
+                } else {
+                    return parent.friends.map((friend) => {
+                        return getUsersDataLoader.load(friend.id);
+                    });
                 }
             }
         }
