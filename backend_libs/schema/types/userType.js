@@ -49,17 +49,21 @@ const user = new GraphQLObjectType({
             },
             resolve: (parent, args, {mPool}, fourth) => {
                 if(args.id !== undefined) {
-                    let result = [];
-                    result.push(mongoFunctions(mPool).getUserValues(args.id));
-                    return result;
+                    return mongoFunctions(mPool).getUserValues(args.id);
+                    // let result = [];
+                    // result.push(mongoFunctions(mPool).
+                    // getUserValues(args.id));
+                    // return result;
                 } 
                 else{
-                    let result = [];
-                    parent.friends.map((item) => {
-                        result.push(mongoFunctions(mPool).
-                        getUserValues(item.id));
-                    });
-                    return result;
+                    return mongoFunctions(mPool).
+                        getUserValues(args.id);
+                    // let result = [];
+                    // parent.friends.map((item) => {
+                    //     result.push(mongoFunctions(mPool).
+                    //     getUserValues(item.id));
+                    // });
+                    // return result;
                 }
             }
         }

@@ -13,7 +13,7 @@ const mongoConfig = require("../config/main_config")[nodeEnv];
 MongoClient.connect(mongoConfig.url, (err, mPool) => {
     assert.equal(err, null);
     Logger.setLevel("debug");
-    Logger.filter('class', ['Server']);
+    Logger.filter("class", ["Server"]);
     app.use("/graphql", graphqlHTTP({
         schema: schema,
         graphiql: true,
