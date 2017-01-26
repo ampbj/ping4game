@@ -33,7 +33,9 @@ const user = new GraphQLObjectType({
         },
         games: {
             type: new GraphQLList(GraphQLString),
-            resolve: () => {}
+            resolve: (parent, args, {mPool}, fourth) => {
+                return parent.games;
+            }
         },
         currentGame: {
             type: GraphQLString
