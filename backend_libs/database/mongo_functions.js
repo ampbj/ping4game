@@ -14,14 +14,13 @@ module.exports = (mPool) => {
             .toArray()
             .then( (result) => result );
         },
-        addNewUser({name, email}) {
+        addNewUser({name, email, location}) {
              return mPool.collection("users").
                 insertOne({
                     "name": name, 
-                    "email": email
-                }, function(err, newUser) {
-                    return newUser;
-                });
+                    "email": email,
+                    "location": location
+                }).then((result) => result.ops[0]);
         }
     };
 };

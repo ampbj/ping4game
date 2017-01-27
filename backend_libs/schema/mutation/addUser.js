@@ -14,6 +14,9 @@ const newUserType = new GraphQLInputObjectType({
         },
         email: {
             type: new GraphQLNonNull(GraphQLString)
+        },
+        location: {
+            type: new GraphQLNonNull(GraphQLString)
         }
     }
 });
@@ -27,4 +30,4 @@ module.exports = {
     resolve(parent, {input}, {mPool}) {
         return mongoFunctions(mPool).addNewUser(input);
     }
-}
+};
