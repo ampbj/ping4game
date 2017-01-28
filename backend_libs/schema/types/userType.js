@@ -57,7 +57,8 @@ const user = new GraphQLObjectType({
                 if (args.id !== undefined) {
                     let mongoId = new ObjectID(args.id);
                     return [getUsersDataLoader.load(mongoId)];
-                } else {
+                } 
+                else {
                     return parent.friends.map((friend) => {
                         return getUsersDataLoader.load(friend.id);
                     });
