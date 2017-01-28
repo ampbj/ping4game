@@ -1,7 +1,7 @@
 // @flow
 const {GraphQLNonNull, GraphQLSchema, 
     GraphQLObjectType, GraphQLID} = require("graphql");
-const userType = require("./types/userType");
+const userType = require("./query/userType");
 const mongoFunctions = require("../database/mongo_functions");
 const addUserMutation = require("./mutation/addUser.js");
 
