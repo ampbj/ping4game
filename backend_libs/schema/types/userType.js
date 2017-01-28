@@ -51,11 +51,13 @@ const user = new GraphQLObjectType({
                     type: GraphQLID
                 }
             },
+            // using dataloader for both cases.(checking for one user or many).
             resolve: (parent, args, {mPool}, fourth) => {
                 const getUsersDataLoader = new DataLoader(mongoFunctions(mPool)
                                             .getUsersValues);
                 if (args.id !== undefined) {
                     let mongoId = new ObjectID(args.id);
+            // return value expects array that is why result is wrapted in []
                     return [getUsersDataLoader.load(mongoId)];
                 } 
                 else {

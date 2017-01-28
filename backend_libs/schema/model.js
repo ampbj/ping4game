@@ -4,6 +4,9 @@ const {GraphQLNonNull, GraphQLSchema,
 const userType = require("./types/userType");
 const mongoFunctions = require("../database/mongo_functions");
 const addUserMutation = require("./mutation/addUser.js");
+
+// place to create the graphql schema.
+
 const RootQueryType = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {

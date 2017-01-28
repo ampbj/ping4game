@@ -10,8 +10,13 @@ const {MongoClient, Logger} = require("mongodb");
 const assert = require("assert");
 const mongoConfig = require("../config/main_config")[nodeEnv];
 
+// app entry file!
+// Here we use MongoClient express graphql and node assertion library
+
 MongoClient.connect(mongoConfig.url, (err, mPool) => {
+    // using asser to let us know if err is not equal to null.
     assert.equal(err, null);
+    // debugger for mongo to stdout
     Logger.setLevel("debug");
     Logger.filter("class", ["Server"]);
     app.use("/graphql", graphqlHTTP({

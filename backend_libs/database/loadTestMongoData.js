@@ -4,6 +4,7 @@ const assert = require("assert");
 const {nodeEnv} = require("../node/util");
 const mongoConfig = require("../config/main_config")[nodeEnv];
 
+// mock mongodb insertion for sample data
 MongoClient.connect(mongoConfig.url, (err, db) => {
     assert.equal(null, err);
     db

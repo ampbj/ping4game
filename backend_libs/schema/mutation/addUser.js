@@ -6,6 +6,8 @@ const{
 const mongoFunctions = require("../../database/mongo_functions");
 const userType = require("../types/userType");
 
+// new user mutation. three values are non null.
+
 const newUserType = new GraphQLInputObjectType({
     name: "newUserType",
     fields: {
@@ -27,6 +29,7 @@ module.exports = {
             type: new GraphQLNonNull(newUserType)
         }
     },
+    // after finishing mutation. return the newly added user.
     resolve(parent, {input}, {mPool}) {
         return mongoFunctions(mPool).addNewUser(input);
     }
