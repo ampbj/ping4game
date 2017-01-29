@@ -4,7 +4,7 @@ const{
     GraphQLString
 } = require("graphql");
 const mongoFunctions = require("../../database/mongo_functions");
-const userType = require("../types/userType");
+const userType = require("../query/userType");
 
 // new user mutation. three values are non null.
 

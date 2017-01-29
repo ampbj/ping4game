@@ -10,7 +10,7 @@ const addUserMutation = require("./mutation/addUser.js");
 const RootQueryType = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
-        users: {
+        user: {
             type: userType,
             description: "top level users collection",
             args: {
