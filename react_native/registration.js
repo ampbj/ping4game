@@ -1,18 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+// @flow
 
 import {Component} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-export default class ping4game extends Component {
+export default class registration extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -49,5 +44,3 @@ const styles = StyleSheet.create({
     marginBottom: 5
   }
 });
-
-AppRegistry.registerComponent('ping4game', () => ping4game);
