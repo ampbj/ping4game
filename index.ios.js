@@ -6,12 +6,12 @@
 
 import React, {Component} from 'react';
 import {AppRegistry} from 'react-native';
-import registration from "./react_native/registration";
+import Registration from "./react_native/Registration";
 
 export default class ping4game extends Component {
   render() {
     return (
-      <registration></registration>
+      <Registration />
     );
   }
 }

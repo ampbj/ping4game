@@ -1,5 +1,4 @@
 // @flow
-
 import React, {Component} from 'react';
 import {
   StyleSheet,
@@ -23,11 +22,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignSelf: 'stretch',
     backgroundColor: '#5CD6F4'
   },
   textInput: {
-    width: 200, 
+    width: 200,
     height: 50, 
     margin: 20,
     backgroundColor: 'white'
