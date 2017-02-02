@@ -10,9 +10,9 @@ export default class registration extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.textInput}/>
-        <TextInput style={styles.textInput}/>
-        <TextInput style={styles.textInput}/>
+        <TextInput style={styles.textInput} placeholder="choose an id"/>
+        <TextInput style={styles.textInput} placeholder="add your email"/>
+        <TextInput style={styles.textInput} placeholder="current location"/>
       </View>
     );
   }
@@ -22,13 +22,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignSelf: 'stretch',
     backgroundColor: '#5CD6F4'
   },
   textInput: {
-    width: 200,
-    height: 50, 
-    margin: 20,
+    alignSelf: 'center',
+    textAlign: 'center',
+    width: 300,
+    height: 50,
+    margin: 30,
+    borderRadius: 50,
     backgroundColor: 'white'
   }
 });
