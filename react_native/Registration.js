@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     width: 300,
-    height: 50,
-    margin: 30,
-    borderRadius: 50,
+    height: 70,
+    marginTop: 50,
+    borderRadius: 20,
+    overflow: 'hidden',
     backgroundColor: 'white'
   }
 });
