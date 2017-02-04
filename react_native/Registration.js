@@ -1,58 +1,67 @@
 // @flow
 import React, {Component} from 'react';
-import {
-  StyleSheet, 
-  TextInput, TouchableHighlight,
-  Text, Button, View
-} from 'react-native';
+import {StyleSheet, Text, ScrollView} from 'react-native';
+import CustomTextInput from './TextInput';
+import AwesomeButton from 'react-native-awesome-button';
 
 export default class Registration extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text style={styles.text}>
           Welcome to ping4game!
         </Text>
-        <TextInput style={styles.textInput} placeholder="choose an id"/>
-        <TextInput style={styles.textInput} placeholder="add your email"/>
-        <TextInput style={styles.textInput} placeholder="current location"/>
-        <TouchableHighlight onPress={this.onPressButton}>
-          <View>
-          <Button style={styles.submitButton} title="Submit"></Button>
-          </View>
-        </TouchableHighlight>
-      </View>
+        <CustomTextInput placeholder="choose an id" maxLength={30}/>
+        <CustomTextInput placeholder="add your email"/>
+        <CustomTextInput placeholder="current location" maxLength={30}/>
+        <AwesomeButton
+          backgroundStyle={styles.submitButton}
+          labelStyle={styles.loginButtonLabel}
+          transitionDuration={200}
+          states={{
+          idle: {
+            text: 'Log In',
+            onPress: this.onPressButton,
+            backgroundColor: '#027046'
+          },
+          busy: {
+            text: 'Logging In',
+            backgroundColor: '#002299',
+            spinner: true
+          },
+          success: {
+            text: 'Logged In',
+            backgroundColor: '#339944'
+          }
+        }}></AwesomeButton>
+      </ScrollView>
     );
   }
-  onButtonPress(event) {}
+  onPressButton(event) {}
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
     backgroundColor: '#0398bc'
-  },
-  textInput: {
-    alignSelf: 'center',
-    textAlign: 'center',
-    width: 300,
-    height: 70,
-    marginTop: 40,
-    borderRadius: 20,
-    overflow: 'hidden',
-    backgroundColor: 'white'
   },
   text: {
     textAlign: 'center',
-    marginTop: 80,
-    marginBottom: 50,
+    marginTop: 50,
+    marginBottom: 30,
     fontWeight: 'bold',
     fontSize: 16
   },
   submitButton: {
-    textAlign: 'center',
-    color: '#008080',
-    marginTop: 40
+    height: 50,
+    width: 150,
+    alignSelf: 'center',
+    marginTop: 30,
+    marginBottom: 30,
+    borderRadius: 10,
+    borderColor: 'black'
+  },
+  loginButtonLabel: {
+    color: 'white'
   }
 });
