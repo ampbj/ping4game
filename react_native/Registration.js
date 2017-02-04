@@ -5,6 +5,13 @@ import CustomTextInput from './TextInput';
 import AwesomeButton from 'react-native-awesome-button';
 
 export default class Registration extends Component {
+  constructor(props) {
+    super(props);
+    this.onPressButton = this.onPressButton.bind(this);
+  }
+  onPressButton(event) {
+    console.log("here I am");
+  }
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -19,25 +26,15 @@ export default class Registration extends Component {
           labelStyle={styles.loginButtonLabel}
           transitionDuration={200}
           states={{
-          idle: {
+          default: {
             text: 'Log In',
             onPress: this.onPressButton,
-            backgroundColor: '#027046'
-          },
-          busy: {
-            text: 'Logging In',
-            backgroundColor: '#002299',
-            spinner: true
-          },
-          success: {
-            text: 'Logged In',
-            backgroundColor: '#339944'
+            backgroundColor: '#087f52'
           }
-        }}></AwesomeButton>
+        }}/>
       </ScrollView>
     );
   }
-  onPressButton(event) {}
 }
 
 const styles = StyleSheet.create({
@@ -54,12 +51,11 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     height: 50,
-    width: 150,
+    width: 200,
     alignSelf: 'center',
-    marginTop: 30,
+    marginTop: 40,
     marginBottom: 30,
-    borderRadius: 10,
-    borderColor: 'black'
+    borderRadius: 10
   },
   loginButtonLabel: {
     color: 'white'
