@@ -6,13 +6,15 @@ import {
 } from 'react-native';
 
 export default class CustomTextInput extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     let maxLength = this.props.maxLength || 40;
     return (
         <TextInput style = {styles.textInput}
             placeholder = {this.props.placeholder} 
-            maxLength = {maxLength} 
-            onChangeText = {this.props.onChangeText}/>
+            maxLength = {maxLength}/>
     );
   }
 }
@@ -26,6 +28,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     borderRadius: 20,
     overflow: 'hidden',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    color: "#466068"
   }
 });

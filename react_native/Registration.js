@@ -1,16 +1,28 @@
 // @flow
 import React, {Component} from 'react';
 import {StyleSheet, Text, ScrollView} from 'react-native';
-import CustomTextInput from './TextInput';
+import CustomTextInput from './CustomTextInput';
 import AwesomeButton from 'react-native-awesome-button';
+import AddUserMutation from '../relay/AddUserMutation';
 
 export default class Registration extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        buttonState: 'default'
+    };
     this.onPressButton = this.onPressButton.bind(this);
   }
   onPressButton(event) {
-    console.log("here I am");
+    this.setState({buttonState: "logging"});
+     this.props.relay.commitUpdate(
+      new AddUserMutation(
+        {
+          name: this.state.name,
+          email: this.state.email,
+          location: this.state.location
+        })
+    );
   }
   render() {
     return (
@@ -18,19 +30,29 @@ export default class Registration extends Component {
         <Text style={styles.text}>
           Welcome to ping4game!
         </Text>
-        <CustomTextInput placeholder="choose an id" maxLength={30}/>
-        <CustomTextInput placeholder="add your email"/>
-        <CustomTextInput placeholder="current location" maxLength={30}/>
+        <CustomTextInput placeholder="choose an id" 
+            onChangeText={(value) => this.setState({name: value})}
+            maxLength={30}/>
+        <CustomTextInput placeholder="add your email" 
+            onChangeText={(value) => this.setState({email: value})}/>
+        <CustomTextInput placeholder="current location" 
+            onChangeText={(value) => this.setState({location: value})}
+            maxLength={30}/>
         <AwesomeButton
+          buttonState={this.state.buttonState}
+          transitionDuration={200}
           backgroundStyle={styles.submitButton}
           labelStyle={styles.loginButtonLabel}
-          transitionDuration={200}
           states={{
-          default: {
-            text: 'Log In',
-            onPress: this.onPressButton,
-            backgroundColor: '#087f52'
-          }
+            default: {
+              text: 'Log In',
+              onPress: this.onPressButton,
+              backgroundColor: '#087f52'
+            },
+            logging: {
+              text: 'Logging In',
+              backgroundColor: '#002299'
+            }
         }}/>
       </ScrollView>
     );
@@ -50,8 +72,8 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   submitButton: {
-    height: 50,
-    width: 200,
+    height: 40,
+    width: 180,
     alignSelf: 'center',
     marginTop: 40,
     marginBottom: 30,
