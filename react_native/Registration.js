@@ -1,11 +1,12 @@
 // @flow
 import React, {Component} from 'react';
+import Relay from 'react-relay';
 import {StyleSheet, Text, ScrollView} from 'react-native';
 import CustomTextInput from './CustomTextInput';
 import AwesomeButton from 'react-native-awesome-button';
 import AddUserMutation from '../relay/AddUserMutation';
 
-export default class Registration extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,5 +82,17 @@ const styles = StyleSheet.create({
   },
   loginButtonLabel: {
     color: 'white'
+  }
+});
+
+export default Relay.createContainer(Registration, {
+  fragments: {
+    viewer: () => Relay.QL`
+      fragment on User {
+        name,
+        email,
+        location
+      }
+    `
   }
 });

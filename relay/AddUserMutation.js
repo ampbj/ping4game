@@ -1,6 +1,11 @@
 import Relay from 'react-relay';
 
 export default class AddUserMutation extends Relay.Mutation {
+    static fragments = {
+        user: () => Relay.QL`
+            fragment on user {
+             }`
+    }
     getMutation() {
         return Relay.QL `mutation{addUser}`;
     }
@@ -23,7 +28,7 @@ export default class AddUserMutation extends Relay.Mutation {
       type: 'FIELDS_CHANGE',
       fieldIDs: {
         name: this.props.name,
-        email: this.props.email, 
+        email: this.props.email,
         location: this.props.location
       }
     }];
