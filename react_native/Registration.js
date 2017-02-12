@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
 export default Relay.createContainer(Registration, {
   fragments: {
     viewer: () => Relay.QL`
-      fragment on User {
+      fragment on userType {
         name,
         email,
         location

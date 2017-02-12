@@ -1,7 +1,7 @@
 import Relay from 'react-relay';
 
-export default class RegistrationRoute extends Relay.Route {
-  static routeName = 'Registration';
+export default class Ping4GameRoute extends Relay.Route {
+  static routeName = 'Ping4GameRoute';
   static queries = {
     registration: (Component) => Relay.QL`
       query RegistrationQuery {

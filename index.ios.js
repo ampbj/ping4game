@@ -8,7 +8,7 @@ import Registration from "./react_native/Registration";
 const {nodeEnv} = require('./backend_libs/config/util');
 const graphqlURL = 
       require("./backend_libs/config/main_config")[nodeEnv].graphqlURL;
-import RegistrationRoute from './relay/relayRoute';
+import Ping4GameRoute from './relay/Ping4GameRoute';
 
 Relay.injectNetworkLayer(
   new Relay.DefaultNetworkLayer(graphqlURL)
@@ -16,11 +16,10 @@ Relay.injectNetworkLayer(
 
 export default class ping4game extends Component {
   render() {
-    let RegistrationRoute = new RegistrationRoute();
     return (
       <Relay.RootContainer
            Component={Registration}
-           route={RegistrationRoute}
+           route={new Ping4GameRoute()}
         />
     );
   }
