@@ -1,4 +1,4 @@
-ping4game
+*ping4game*
 
 This is an experimental project to use cutting edge technologies to create a mobile app.
 
