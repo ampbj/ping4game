@@ -5,7 +5,7 @@ const {nodeEnv} = require("../config/util");
 const mongoConfig = require("../config/main_config")[nodeEnv];
 
 // mock mongodb insertion for sample data
-MongoClient.connect(mongoConfig.url, (err, db) => {
+MongoClient.connect(mongoConfig.mongoURL, (err, db) => {
     assert.equal(null, err);
     db
         .collection("users")

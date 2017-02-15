@@ -1,11 +1,6 @@
 import Relay from 'react-relay';
 
 export default class AddUserMutation extends Relay.Mutation {
-    static fragments = {
-        user: () => Relay.QL`
-            fragment on user {
-             }`
-    }
     getMutation() {
         return Relay.QL `mutation{addUser}`;
     }

@@ -5,7 +5,7 @@ export default class Ping4GameRoute extends Relay.Route {
   static queries = {
     registration: (Component) => Relay.QL`
       query RootQuery {
-          userType { ${Component.getFragment('userType')} },
+          userType { ${Component.getFragment('user')} },
       }
     `
   };
