@@ -23,7 +23,7 @@ module.exports = (mPool) => {
                     "name": name, 
                     "email": email,
                     "location": location
-                }).then((result) => result.ops[0]);
+                });
         }
     };
 };
